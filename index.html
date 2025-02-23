@@ -8,42 +8,80 @@
 </head>
 <body onload="authenticateUser()">
     <div class="container">
+        <!-- Floating Buttons -->
+        <div class="floating-buttons">
+            <button id="biometric-login" class="floating-btn">🔒 Login with Biometrics</button>
+            <button id="chatbot-btn" class="floating-btn">🤖 Chat with AI</button>
+        </div>
+
         <header>
             <h1>💰 Budget Planner</h1>
         </header>
-
+        
         <main>
+            <section class="mission">
+                <p>Track your income and expenses effortlessly while staying on top of your financial goals.</p>
+            </section>
+            
             <section class="input-section">
                 <h2>Add a Transaction</h2>
+
+                <!-- Income Input -->
                 <div class="input-group">
-                    <label for="income">Income</label>
+                    <label for="income-name">Income Name</label>
+                    <input type="text" id="income-name" placeholder="Enter income name">
+                    
+                    <label for="income">Amount</label>
                     <input type="number" id="income" placeholder="Enter amount">
+                    
+                    <label for="income-date">Date</label>
+                    <input type="date" id="income-date">
+                    
                     <button class="btn btn-success" id="addIncome">+ Add Income</button>
                 </div>
-                
+
+                <!-- Expense Input -->
                 <div class="input-group">
-                    <label for="expense">Expense</label>
+                    <label for="expense-name">Expense Name</label>
+                    <input type="text" id="expense-name" placeholder="Enter expense name">
+                    
+                    <label for="expense">Amount</label>
                     <input type="number" id="expense" placeholder="Enter amount">
+                    
+                    <label for="expense-date">Date</label>
+                    <input type="date" id="expense-date">
+                    
                     <button class="btn btn-danger" id="addExpense">- Add Expense</button>
                 </div>
             </section>
+            
+            <section class="transaction-history">
+                <h2>Budget Records</h2>
+                <button id="filter-btn" class="btn btn-info">🔍 Filter</button>
 
-            <section class="transaction-list">
-                <h2>Transaction History</h2>
-                <ul id="transactions"></ul>
-            </section>
-
-            <section class="summary">
-                <h2>Summary</h2>
-                <p><strong>Total Income:</strong> <span id="total-income">$0.00</span></p>
-                <p><strong>Total Expenses:</strong> <span id="total-expenses">$0.00</span></p>
-                <p><strong>Balance:</strong> <span id="balance">$0.00</span></p>
+                <!-- Budget Records Table -->
+                <table class="budget-table">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Income</th>
+                            <th colspan="3">Expenses</th>
+                            <th rowspan="2">Actions</th>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions">
+                        <!-- Dynamic Entries Will Be Added Here -->
+                    </tbody>
+                </table>
             </section>
         </main>
-
-        <footer>
-            <button id="chatbot-btn" class="btn btn-primary">🤖 Chat with AI</button>
-        </footer>
     </div>
 
     <script type="module" src="firebase-config.js"></script>
